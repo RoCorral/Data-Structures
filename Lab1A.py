@@ -48,12 +48,18 @@ def process_dir(path):
                     dog_list.append(path + '/' + pic)       # appends the path and the picture into the correct list
                 else:
                     cat_list.append(path + '/' + pic)
-    
+    #Robert-lists are not merged thus empty. only pics added are the ones that possibly exist in the first directory
  
     for directory in dir_list:          # for loop with recursion
             #print(directory)
         process_dir(path +'/' + directory)
-            
+    '''
+    Robert-The directory list could have been traversed recursivly by using a index parameter to
+    increment first by depth such as process_dir(path + '/' + dir_list[d], 0) zero being an index
+    parameter d in subsiquent calls to the deeper directories then down the dir_list 
+    list by passing (path, d+1) maintaining the depth of current directory but checking 
+    the next in the list on return from checking deeper.
+    '''
     print(dog_list)
     print(cat_list)
     return cat_list, dog_list
